@@ -235,7 +235,7 @@ def main():
 
     print('TSNE ...')
     np.random.seed(random_seed)
-    latent_enbedded = TSNE(n_components=2).fit_transform(latent_dim)
+    latent_enbedded = TSNE(n_components=2, random_state=1).fit_transform(latent_dim)
     print('latent_enbedded shape = ', latent_enbedded.shape)
 
     # load attributes
