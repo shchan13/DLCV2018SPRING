@@ -1,6 +1,6 @@
 # DLCV Final Project - Challenge 2
-##### Group11
-##### Members: 
+### Group11
+### Members: 
 * Shao-Hung Chan R06921017
 * Yu-Ting Hsiao  R06921010
 * Ya-Hui Chien   R06921016
