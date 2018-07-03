@@ -22,8 +22,8 @@ $ bash task1.sh $1 $2
 ```shell
 $ bash task2.sh $1 $2
 ```
-* ==$1:== Directory of testing images
-* ==$2:== Directory of output label label folder
+* **$1:** Directory of testing images
+* **$2:** Directory of output label label folder
 
 ### To train our model
 1. Put the folder **"dlcv_final_2_dataset"** under this directory.
