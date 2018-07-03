@@ -13,19 +13,19 @@
 4. scikit-image 0.13.1
 5. keras 2.1.5
 
-## Run Testing
-### Task1:
+### Run Testing
+#### Task1:
 ```shell
 $ bash task1.sh $1 $2
 ```
-### Task2:
+#### Task2:
 ```shell
 $ bash task2.sh $1 $2
 ```
 $1: Directory of testing images
 $2: Directory of output label label folder
 
-## To train our model
+### To train our model
 1. Put the folder **"dlcv_final_2_dataset"** under this directory.
 2. Run `$ python3 -O ./src/train_mynet.py`.
 3. For data augmentation, run `$ python3 -O ./src/train_new.py`.
