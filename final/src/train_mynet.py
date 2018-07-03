@@ -60,12 +60,12 @@ def data_generator(img_dir, batch_size, img_height, img_width, in_img_name, in_i
 
 
 def main():
-    TRAIN_IMG_DIR = '../dlcv_final_2_dataset/train/'
-    TRAIN_ID_DIR = '../dlcv_final_2_dataset/train_id.txt'
-    VAL_IMG_DIR = '../dlcv_final_2_dataset/val/'
-    VAL_ID_DIR = '../dlcv_final_2_dataset/val_id.txt'
-    MODEL_DIR = '../model/mynet.hdf5'
-    HISTORY_DIR = '../history/history_mynet2.pickle'
+    TRAIN_IMG_DIR = './dlcv_final_2_dataset/train/'
+    TRAIN_ID_DIR = './dlcv_final_2_dataset/train_id.txt'
+    VAL_IMG_DIR = './dlcv_final_2_dataset/val/'
+    VAL_ID_DIR = './dlcv_final_2_dataset/val_id.txt'
+    MODEL_DIR = './model/mynet.hdf5'
+    HISTORY_DIR = './history/history_mynet2.pickle'
 
     IMG_HEIGHT = 218
     IMG_WIDTH = 178

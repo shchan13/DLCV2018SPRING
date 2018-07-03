@@ -14,10 +14,10 @@ def normalize(img):
 def main():  
     parser = argparse.ArgumentParser()
     parser.add_argument('--test', type=str, default=os.getcwd())
-    parser.add_argument('--out', type=str, default='./output.csv')
+    parser.add_argument('--out', type=str, default=os.getcwd())
     args = parser.parse_args()
 
-    MODEL_DIR = '../model/inception_v3_new2.hdf5'
+    MODEL_DIR = './model/inception_v3_new2.hdf5'
     TEST_IMG_DIR = args.test
     OUTPUT_DIR = args.out
     OUTPUT_NAME = 'output_inception_v3_new2.csv'
@@ -30,10 +30,10 @@ def main():
     BATCH_SIZE = 16
 
     # Load the dictionary for id
-    with open('../dictionary/dual_dict.txt', 'r') as f:
+    with open('./dictionary/dual_dict.txt', 'r') as f:
         dual_dict = json.load(f)
 
-    with open('../dictionary/id_dict.txt', 'r') as f:
+    with open('./dictionary/id_dict.txt', 'r') as f:
         id_dict = json.load(f)
 
     N_CLASSES = len(id_dict)

@@ -40,13 +40,13 @@ def normalize(img):
 
 
 def main():
-    TRAIN_IMG_DIR = '../dlcv_final_2_dataset/train/'
-    TRAIN_ID_DIR = '../dlcv_final_2_dataset/train_id.txt'
-    VAL_IMG_DIR = '../dlcv_final_2_dataset/val/'
-    VAL_ID_DIR = '../dlcv_final_2_dataset/val_id.txt'
-    MODEL_DIR = '../model/mynet.hdf5'
-    MODEL_AUG_DIR = '../model/mynet_aug.hdf5'
-    HISTORY_DIR = '../history/history_mynet_aug.pickle'
+    TRAIN_IMG_DIR = './dlcv_final_2_dataset/train/'
+    TRAIN_ID_DIR = './dlcv_final_2_dataset/train_id.txt'
+    VAL_IMG_DIR = './dlcv_final_2_dataset/val/'
+    VAL_ID_DIR = './dlcv_final_2_dataset/val_id.txt'
+    MODEL_DIR = './model/mynet.hdf5'
+    MODEL_AUG_DIR = './model/mynet_aug.hdf5'
+    HISTORY_DIR = './history/history_mynet_aug.pickle'
     
     IMG_HEIGHT = 218
     IMG_WIDTH = 178

@@ -18,10 +18,10 @@ def normalize(img):
 def main():  
     parser = argparse.ArgumentParser()
     parser.add_argument('--test', type=str, default=os.getcwd())
-    parser.add_argument('--out', type=str, default='./output')
+    parser.add_argument('--out', type=str, default=os.getcwd())
     args = parser.parse_args()
 
-    MODEL_DIR = ['../model/xception_aug2.hdf5', '../model/shufflenet.hdf5', '../model/mobilenet.hdf5', '../model/mynet2_aug.hdf5']
+    MODEL_DIR = ['./model/xception_aug2.hdf5', './model/shufflenet.hdf5', './model/mobilenet.hdf5', './model/mynet2_aug.hdf5']
     TEST_IMG_DIR = args.test
     OUTPUT_DIR = args.out
     OUTPUT_NAME = ['output_xception_aug2.csv', 'output_shufflenet.csv', 'output_mobilenet.csv', 'output_mynet2_aug.csv']
@@ -34,10 +34,10 @@ def main():
     BATCH_SIZE = 16
 
     # Load the dictionary for id
-    with open('../dictionary/dual_dict.txt', 'r') as f:
+    with open('./dictionary/dual_dict.txt', 'r') as f:
         dual_dict = json.load(f)
 
-    with open('../dictionary/id_dict.txt', 'r') as f:
+    with open('./dictionary/id_dict.txt', 'r') as f:
         id_dict = json.load(f)
 
     N_CLASSES = len(id_dict)
