@@ -19,7 +19,7 @@
 $ bash task1.sh $1 $2
 ```
 * **$1:** Absolute directory of testing images. eg. <YOUR_PATH>/test/
-* **$2:** Absolute directory of output label **folder**. eg. <YOUR_PATH>/result/
+* **$2:** Absolute directory of output label **folder**. eg. <YOUR_PATH>/<output label folder>/
 
 The output csv file will be **output_inception_v3_new2.csv**
 
