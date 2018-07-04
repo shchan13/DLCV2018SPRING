@@ -19,7 +19,7 @@
 $ bash task1.sh $1 $2
 ```
 * **$1:** Absolute directory of testing images. eg. <YOUR_PATH>/test/
-* **$2:** Absolute directory of output label **folder**. eg. <YOUR_PATH>/<OUTPUT LABEL FOLDER>/
+* **$2:** Absolute directory of output label **folder**.
 
 The output csv file will be **output_inception_v3_new2.csv**
 
@@ -28,7 +28,7 @@ The output csv file will be **output_inception_v3_new2.csv**
 $ bash task2.sh $1 $2
 ```
 * **$1:** Absolute directory of testing images. eg. <YOUR_PATH>/test/
-* **$2:** Absolute directory of output label **folder**. eg. <YOUR_PATH>/<OUTPUT LABEL FOLDER>/
+* **$2:** Absolute directory of output label **folder**.
 
 Since we implemented 4 models, the output files will be **output_xception_aug2.csv**, **output_shufflenet.csv**, **output_mobilenet.csv**, and **output_mynet2_aug.csv** inside $2 respectively.
 
