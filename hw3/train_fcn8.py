@@ -13,8 +13,9 @@ from keras.models import Model
 from keras.utils import plot_model 
 from keras.callbacks import ModelCheckpoint
 
+
 def load_model(weight_name, n_classes, img_size):
-    # Bloack 1
+    # Block 1
     img_input = Input(shape=(img_size, img_size,3))
     x = Conv2D(64, (3,3), activation='relu', padding='same', name='block1_conv1')(img_input)
     x = Conv2D(64, (3,3), activation='relu', padding='same', name='block1_conv2')(x)
@@ -33,43 +34,43 @@ def load_model(weight_name, n_classes, img_size):
     f3 = x
 
     # Block 4
-    x = Conv2D(512, (3,3), activation='relu', padding='same', name='block4_conv1')(x)
-    x = Conv2D(512, (3,3), activation='relu', padding='same', name='block4_conv2')(x)
-    x = Conv2D(512, (3,3), activation='relu', padding='same', name='block4_conv3')(x)
-    x = MaxPooling2D((2,2), strides=(2,2), name='block4_pool')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv1')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv2')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block4_conv3')(x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='block4_pool')(x)
     f4 = x
 
     # Block 5
-    x = Conv2D(512, (3,3), activation='relu', padding='same', name='block5_conv1')(x)
-    x = Conv2D(512, (3,3), activation='relu', padding='same', name='block5_conv2')(x)
-    x = Conv2D(512, (3,3), activation='relu', padding='same', name='block5_conv3')(x)
-    x = MaxPooling2D((2,2), strides=(2,2), name='block5_pool')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv1')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv2')(x)
+    x = Conv2D(512, (3, 3), activation='relu', padding='same', name='block5_conv3')(x)
+    x = MaxPooling2D((2, 2), strides=(2, 2), name='block5_pool')(x)
     f5 = x
 
     vgg = Model(img_input, x)
     vgg.load_weights(weight_name, by_name=True)
 
-    o = Conv2D(1024, (7,7), activation='relu', padding = 'same')(x)
+    o = Conv2D(1024, (7, 7), activation='relu', padding = 'same')(x)
     o = Dropout(0.5)(o)
-    o = Conv2D(1024, (1,1), activation='relu', padding = 'same')(o)
+    o = Conv2D(1024, (1, 1), activation='relu', padding = 'same')(o)
     o = Dropout(0.5)(o)
     
-    o = Conv2D(n_classes, kernel_size=(1,1), kernel_initializer='he_normal', strides=(1,1))(o)
-    o = Conv2DTranspose(n_classes, kernel_size=(4,4), strides=(2,2), activation='linear')(o)
-    o = Cropping2D(cropping=((1,1),(1,1)))(o)
+    o = Conv2D(n_classes, kernel_size=(1, 1), kernel_initializer='he_normal', strides=(1, 1))(o)
+    o = Conv2DTranspose(n_classes, kernel_size=(4, 4), strides=(2, 2), activation='linear')(o)
+    o = Cropping2D(cropping=((1, 1), (1, 1)))(o)
 
-    o2 = Conv2D(n_classes, kernel_size=(1,1), kernel_initializer='he_normal')(f4)
+    o2 = Conv2D(n_classes, kernel_size=(1, 1), kernel_initializer='he_normal')(f4)
     
     o = Add()([o, o2])
 
-    o = Conv2DTranspose(n_classes, kernel_size=(4,4), strides=(2,2), activation='linear')(o)
-    o = Cropping2D(cropping=((1,1),(1,1)))(o)
+    o = Conv2DTranspose(n_classes, kernel_size=(4, 4), strides=(2, 2), activation='linear')(o)
+    o = Cropping2D(cropping=((1, 1), (1, 1)))(o)
 
-    o2 = Conv2D(n_classes, kernel_size=(1,1), kernel_initializer='he_normal')(f3)
-    o = Add()([o2,o])
+    o2 = Conv2D(n_classes, kernel_size=(1, 1), kernel_initializer='he_normal')(f3)
+    o = Add()([o2, o])
 
-    o = Conv2DTranspose(n_classes, kernel_size=(16,16), strides=(8,8), activation='softmax')(o)
-    o = Cropping2D(cropping=((4,4),(4,4)))(o)
+    o = Conv2DTranspose(n_classes, kernel_size=(16, 16), strides=(8, 8), activation='softmax')(o)
+    o = Cropping2D(cropping=((4, 4), (4, 4)))(o)
 
     model = Model(img_input, o)
     model.summary()
@@ -111,7 +112,6 @@ def label2onehot(label_img, n_classes):
     return label_1hot 
 
 
-
 def data_generator(train_num, train_path, batch_size, img_size, n_classes):
     step_idx = 0
     train_img = np.zeros((batch_size, img_size, img_size, 3))
@@ -123,8 +123,8 @@ def data_generator(train_num, train_path, batch_size, img_size, n_classes):
             np.random.shuffle(idx)
             
         for num in range(batch_size):
-            train_img[num, :,:,:] = io.imread(train_path + format(idx[step_idx], '04d') + '_sat.jpg') / 255.
-            train_label[num, :,:, :] = label2onehot(img2label(io.imread(train_path + format(idx[step_idx], '04d') + '_mask.png')), n_classes)
+            train_img[num, :, :, :] = io.imread(train_path + format(idx[step_idx], '04d') + '_sat.jpg') / 255.
+            train_label[num, :, :, :] = label2onehot(img2label(io.imread(train_path + format(idx[step_idx], '04d') + '_mask.png')), n_classes)
 
             step_idx += 1
             if step_idx == train_num:
@@ -135,7 +135,7 @@ def data_generator(train_num, train_path, batch_size, img_size, n_classes):
 
 
 def onehot2label(label_1hot, img_size, n_classes):
-    label_array = np.argmax(label_1hot, axis = -1)
+    label_array = np.argmax(label_1hot, axis=-1)
     return label_array
 
 
@@ -188,7 +188,7 @@ def main():
     for i in range(gnd_img.shape[0]):
         io.imsave(TEMP_PATH + format(i,'04d') + '_mask.png', gnd_img[i,:,:,:])
     """
-    #end test
+    # end test
 
     print('load model ...')
     model = load_model(FILE_PATH+WEIGHT_NAME, N_CLASSES, IMG_SIZE)
@@ -200,11 +200,11 @@ def main():
     model_path = FILE_PATH + 'model/vgg16fcn8_weight_azure2.hdf5'
     checkpoint = ModelCheckpoint(   model_path, 
                                     monitor='val_acc', 
-                                    mode = 'auto', 
+                                    mode='auto',
                                     verbose=1, 
                                     save_best_only = True,
                                     save_weights_only = True,
-                                    period = 1)
+                                    period=1)
     callback_list = [checkpoint]
 
     LOOPCOUNT = int(IMG_NUM*0.9) // BATCH_SIZE
@@ -219,6 +219,7 @@ def main():
         pickle.dump(history.history, file_pi)
 
     return
+
 
 if __name__ == '__main__':
     main()
